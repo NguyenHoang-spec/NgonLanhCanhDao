@@ -3,7 +3,9 @@ import { pipeline, env } from '@huggingface/transformers';
 // Disable local models to force downloading from huggingface
 env.allowLocalModels = false;
 // Tắt đa luồng (multi-threading) để sửa lỗi "reading 'buffer'" trên Netlify do thiếu SharedArrayBuffer
-env.backends.onnx.wasm.numThreads = 1;
+if (env.backends && env.backends.onnx && env.backends.onnx.wasm) {
+    env.backends.onnx.wasm.numThreads = 1;
+}
 
 class LocalEmbeddingService {
     private extractor: any = null;
