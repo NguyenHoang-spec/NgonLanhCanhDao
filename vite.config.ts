@@ -29,14 +29,17 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.ALL_KEYS': JSON.stringify(allKeys),
-        'process.env.ALL_KEY_NAMES': JSON.stringify(allKeyNames),
-        'process.env.VITE_USE_PROXY': JSON.stringify(env.VITE_USE_PROXY),
-        'process.env.VITE_PROXY_URL': JSON.stringify(env.VITE_PROXY_URL),
-        'process.env.VITE_PROXY_KEY': JSON.stringify(env.VITE_PROXY_KEY),
-        'process.env.VITE_PROXY_MODEL': JSON.stringify(env.VITE_PROXY_MODEL)
+        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
+        'process.env.ALL_KEYS': JSON.stringify(allKeys || []),
+        'process.env.ALL_KEY_NAMES': JSON.stringify(allKeyNames || []),
+        'process.env.VITE_USE_PROXY': JSON.stringify(env.VITE_USE_PROXY || ''),
+        'process.env.VITE_PROXY_URL': JSON.stringify(env.VITE_PROXY_URL || ''),
+        'process.env.VITE_PROXY_KEY': JSON.stringify(env.VITE_PROXY_KEY || ''),
+        'process.env.VITE_PROXY_MODEL': JSON.stringify(env.VITE_PROXY_MODEL || ''),
+        'process.env.TESTING_REMOTELY': JSON.stringify(''),
+        'process.env.HF_TOKEN': JSON.stringify(''),
+        'process.env.HF_ACCESS_TOKEN': JSON.stringify('')
       },
       resolve: {
         alias: {
